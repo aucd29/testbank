@@ -3,6 +3,7 @@ package com.example.testbank.deviceapi.dialog
 import android.view.View
 import androidx.annotation.DrawableRes
 import java.io.Serializable
+import com.example.testbank.deviceapi.dialog.DialogInterface.Companion.DEFAULT
 
 data class DialogModel (
     val message: String,
@@ -10,7 +11,7 @@ data class DialogModel (
     val positiveCallback: (() -> Unit)? = null,
     val negativeCallback: (() -> Unit)? = null,
     val view: View? = null,
-    val type: Int = 0,
+    val type: Int = DEFAULT,
     val cancelable: Boolean = false,
     val positiveButtonText: String? = null,
     val negativeButtonText: String? = null,

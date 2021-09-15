@@ -17,7 +17,7 @@ import com.example.testbank.deviceapi.open.OpenInterface
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class BaseFragment<T: ViewDataBinding>(
+open class BaseFragment<T: ViewDataBinding>(
     @LayoutRes val layoutResid: Int
 ) : Fragment() {
     protected lateinit var binding: T
@@ -89,7 +89,6 @@ class BaseFragment<T: ViewDataBinding>(
     }
 
     protected fun finish() {
-        // 스택이 없을 경우 액티비티를 종료하도록 수정 [aucd29][2021/08/20]
         if (parentFragmentManager.backStackEntryCount == 0) {
             activity?.finish()
         } else {

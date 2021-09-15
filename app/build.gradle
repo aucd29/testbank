@@ -116,6 +116,9 @@ dependencies {
     // rooting
     implementation 'com.scottyab:rootbeer-lib:0.0.8'
 
+    // lottie
+    implementation 'com.airbnb.android:lottie:3.7.0'
+
     // TEST
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-inline:3.3.3' //Mock

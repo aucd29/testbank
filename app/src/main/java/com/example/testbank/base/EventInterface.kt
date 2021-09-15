@@ -28,14 +28,6 @@ interface EventInterface {
         sendEvent(EVENT_FINISH)
     }
 
-    fun openContent(url: String?) {
-        url?.let {
-            if (it.isNotEmpty()) {
-                sendEvent(EVENT_OPEN_CONTENT, it)
-            }
-        }
-    }
-
     fun unknownError(message: String = "") {
         sendEvent(ERROR_UNKNOWN, message)
     }
