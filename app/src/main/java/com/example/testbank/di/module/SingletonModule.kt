@@ -1,6 +1,6 @@
 package com.example.testbank.di.module
 
- import android.webkit.CookieManager
+import android.webkit.CookieManager
  import com.example.testbank.base.InitializerInterface
  import com.example.testbank.base.MyInitializer
  import com.example.testbank.base.webview.CookieInterface

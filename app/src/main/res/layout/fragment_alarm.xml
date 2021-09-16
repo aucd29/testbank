@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <!--<variable name="vm" type="" />-->
+        <variable name="vm" type="com.example.testbank.view.main.alarm.AlarmViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,15 +14,20 @@
         android:layout_height="match_parent"
         tools:context=".view.main.alarm.AlarmFragment">
 
-        <TextView
-            android:id="@+id/textview_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="hello alarm fragment"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/alarm_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:bindItems="@{vm.items}"
+            tools:itemCount="20"
+            tools:listitem="@layout/item_more_menu"
             />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

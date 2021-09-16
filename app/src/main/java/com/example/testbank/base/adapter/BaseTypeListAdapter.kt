@@ -74,12 +74,12 @@ class BaseDiffer<DT: ListAdapterViewType<*>> : DiffUtil.ItemCallback<DT>() {
 open class BaseTypeListAdapter<T: ListAdapterViewType<*>>(
     open val residMap: Map<Int, Int>,
     open var viewModel: ViewModel? = null,
-    val viewDataBindingCallback: ((ViewDataBinding, Int) -> Unit)? = null
+    val viewDataBindingCallback: ((ViewDataBinding, Int, T) -> Unit)? = null
 ) : ListAdapter<T, BaseViewHolder<T>>(BaseDiffer<T>()) {
     constructor(
         resid: Int,
         viewModel: ViewModel? = null,
-        viewDataBindingCallback: ((ViewDataBinding, Int) -> Unit)? = null
+        viewDataBindingCallback: ((ViewDataBinding, Int, T) -> Unit)? = null
     ) : this(mapOf(0 to resid), viewModel, viewDataBindingCallback)
 
     var adapterLifecycleOwner: LifecycleOwner? = null
@@ -105,7 +105,7 @@ open class BaseTypeListAdapter<T: ListAdapterViewType<*>>(
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
-        viewDataBindingCallback?.invoke(holder.binding, position)
+        viewDataBindingCallback?.invoke(holder.binding, position, currentList[position])
         holder.bind(getItem(position), viewModel)
     }
 }

@@ -1,0 +1,72 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="item" type="com.example.testbank.repository.local.model.more.MoreMenuModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_more_menu_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        app:backgroundColor="@{item.backgroundColor}"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_alarm_menu_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="@color/color_grey_900"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{item.title}"
+            tools:text="@tools:sample/last_names"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="2dp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/color_white"
+            android:textSize="9dp"
+            android:background="@drawable/shape_round_corner_10"
+            app:layout_constraintTop_toTopOf="@+id/item_alarm_menu_title"
+            app:layout_constraintStart_toEndOf="@+id/item_alarm_menu_title"
+            app:layout_constraintBottom_toBottomOf="@+id/item_alarm_menu_title"
+            app:visibleOrGone="@{item.isBadge}"
+            android:text="@{item.badgeText == null ? `NEW` : item.badgeText}"
+            tools:text="NEW"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="2dp"
+            android:layout_marginEnd="10dp"
+            app:srcCompat="@drawable/ic_baseline_chevron_right_24"
+            android:tint="@color/color_grey_600"
+            app:layout_constraintTop_toTopOf="@+id/item_alarm_menu_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/item_alarm_menu_title"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

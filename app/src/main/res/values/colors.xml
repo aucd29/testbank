@@ -108,4 +108,6 @@
     <color name="color_grey_700">#495057</color>
     <color name="color_grey_800">#343a40</color>
     <color name="color_grey_900">#212529</color>
+
+    <color name="color_test">#FF9800</color>
 </resources>

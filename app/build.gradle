@@ -119,6 +119,9 @@ dependencies {
     // lottie
     implementation 'com.airbnb.android:lottie:3.7.0'
 
+    // expandable layout
+    implementation 'com.github.cachapa:ExpandableLayout:2.9.2'
+
     // TEST
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-inline:3.3.3' //Mock
