@@ -19,7 +19,7 @@
             android:layout_height="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:backgroundColor="@{item.topBackgroundColor}"
+            app:backgroundColor="@{item.topBackgroundColor ?? `#00ffffff`}"
             />
 
         <View
@@ -39,7 +39,7 @@
             android:layout_height="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_more_top"
-            app:backgroundColor="@{item.bottomBackgroundColor}"
+            app:backgroundColor="@{item.bottomBackgroundColor ?? `#00ffffff`}"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

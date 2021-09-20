@@ -37,9 +37,11 @@ fun View.setVisibleOrInvisible(show: Boolean) {
 
 @BindingAdapter("backgroundColor")
 fun View.setBackgroundColor(color: String?) {
-    color?.let {
-        setBackgroundColor(it.toColor())
-    }
+    setBackgroundColor(
+        color?.let {
+            it.toColor()
+        } ?: android.R.color.transparent
+    )
 }
 
 @BindingAdapter("backgroundTint")

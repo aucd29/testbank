@@ -2,31 +2,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.testbank.view.main.MainActivity">
+
     <item
         android:id="@+id/home_fragment"
-        android:title="@string/action_settings"
+        android:title="@string/label_home_fragment"
         android:icon="@drawable/ic_baseline_person_24"
-        android:enabled="true"
         />
 
     <item
         android:id="@+id/service_fragment"
-        android:title="@string/action_settings"
+        android:title="@string/label_service_fragment"
         android:icon="@drawable/ic_baseline_dashboard_24"
-        android:enabled="true"
         />
 
     <item
         android:id="@+id/alarm_fragment"
-        android:title="@string/action_settings"
+        android:title="@string/label_alarm_fragment"
         android:icon="@drawable/ic_baseline_notifications_24"
-        android:enabled="true"
         />
 
     <item
         android:id="@+id/more_fragment"
-        android:title="@string/action_settings"
+        android:title="@string/label_more_fragment"
         android:icon="@drawable/ic_gnb_more_24"
-        android:enabled="true"
         />
 </menu>

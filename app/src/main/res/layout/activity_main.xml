@@ -35,6 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@android:color/white"
+            app:itemIconTint="@color/selector_bottom_navigation"
             app:elevation="1dp"
             app:labelVisibilityMode="unlabeled"
             app:menu="@menu/menu_main"

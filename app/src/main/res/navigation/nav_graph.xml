@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/home_fragment">
+    app:startDestination="@id/more_fragment">
 
     <fragment
         android:id="@+id/home_fragment"
@@ -18,10 +18,6 @@
         android:name="com.example.testbank.view.main.service.ServiceFragment"
         android:label="@string/label_service_fragment"
         tools:layout="@layout/fragment_service">
-
-<!--        <action-->
-<!--            android:id="@+id/action_FirstFragment_to_SecondFragment"-->
-<!--            app:destination="@id/SecondFragment" />-->
     </fragment>
 
     <fragment
@@ -29,10 +25,6 @@
         android:name="com.example.testbank.view.main.alarm.AlarmFragment"
         android:label="@string/label_alarm_fragment"
         tools:layout="@layout/fragment_alarm">
-
-<!--        <action-->
-<!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
-<!--            app:destination="@id/FirstFragment" />-->
     </fragment>
 
     <fragment
@@ -40,9 +32,5 @@
         android:name="com.example.testbank.view.main.more.MoreFragment"
         android:label="@string/label_more_fragment"
         tools:layout="@layout/fragment_more">
-
-        <!--        <action-->
-        <!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
-        <!--            app:destination="@id/FirstFragment" />-->
     </fragment>
 </navigation>

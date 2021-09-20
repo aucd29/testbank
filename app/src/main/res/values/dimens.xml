@@ -1,3 +1,5 @@
 <resources>
+    <dimen name="app_bar_height">100dp</dimen>
+    <dimen name="toolbar_margin_start">20dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 </resources>

@@ -15,6 +15,7 @@
         android:clickable="true"
         android:focusable="true"
         app:backgroundColor="@{item.backgroundColor}"
+        android:contentDescription="@{@string/description_go_to_menu(item.title)}"
         >
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -51,6 +52,7 @@
             app:visibleOrGone="@{item.isBadge}"
             android:text="@{item.badgeText == null ? `NEW` : item.badgeText}"
             tools:text="NEW"
+            tools:visibility="gone"
             />
 
         <androidx.appcompat.widget.AppCompatImageView

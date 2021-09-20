@@ -68,6 +68,7 @@
 
     <color name="color_black">#000000</color>
     <color name="color_white">#ffffff</color>
+    <color name="color_white_alpha90">#E6FFFFFF</color>
     <color name="color_navy">#2c3e50</color>
     <color name="color_red">#d0021b</color>
     <color name="color_line">#d2d2d2</color>
