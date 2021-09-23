@@ -5,19 +5,72 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <!--<variable name="vm" type="com.example.testbank.view.main.more.MoreViewModel" />-->
+        <variable name="vm" type="com.example.testbank.view.main.home.search.SearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/search_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_search_keyword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:hint="@string/search_search"
+            android:textSize="20sp"
+            android:background="@drawable/shape_rectangle_gray_background"
+            android:inputType="text"
+            android:imeOptions="actionSearch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/iv_search_button"
+            android:text="@={vm.keyword}"
+            />
+        
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="?android:attr/selectableItemBackground"
+            app:srcCompat="@drawable/ic_search_black_24dp"
+            app:layout_constraintTop_toTopOf="@+id/et_search_keyword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/et_search_keyword"
+            android:onClick="@{() -> vm.search()}"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_search_keyword"
+            app:bindItems="@{vm.searchItems}"
+            tools:listitem="@layout/item_search"
+            />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="검색"
+            android:layout_height="0dp"
             android:gravity="center_vertical|center"
+            android:background="@android:color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/search_recycler"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/search_empty_list"
+            app:visibleOrGone="@{vm.isSearchEmpty}"
+            tools:visibility="gone"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,7 @@
 package com.example.testbank.di.module.libs
 
 import com.example.testbank.base.extension.moshiBuild
-import com.example.testbank.repository.remote.KakaoRestSearchService
+import com.example.testbank.repository.remote.service.KakaoRestSearchService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,7 +10,6 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
-import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module

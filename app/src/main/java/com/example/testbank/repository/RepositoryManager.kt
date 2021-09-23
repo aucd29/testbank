@@ -3,7 +3,9 @@ package com.example.testbank.repository
 import com.example.testbank.repository.dummy.HiltDummyRepository
 import com.example.testbank.repository.local.model.alarm.BaseAlarmModel
 import com.example.testbank.repository.local.model.more.BaseMoreModel
-import com.example.testbank.repository.remote.dto.HiltRemoteRepository
+import com.example.testbank.repository.local.model.search.SearchModel
+import com.example.testbank.repository.local.model.search.SearchResultModel
+import com.example.testbank.repository.remote.HiltRemoteRepository
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Qualifier
@@ -25,6 +27,15 @@ interface RepositoryInterface {
      * @return 더보기 메뉴 목록
      */
     fun moreMenus(): Single<List<BaseMoreModel>>
+
+    /**
+     * 이미지 + 동영상 검색
+     * @param keyword 검색어
+     * @param endImage 더 이상 이미지 검색이 불가한지 유/무
+     * @param endVideo 더 이상 동영상 검색이 불가한지 유/무
+     * @return 검색 결과
+     */
+    fun search(keyword: String, page: Int, endImage: Boolean = false, endVideo: Boolean = false): Single<SearchResultModel>
 }
 
 @Singleton
@@ -38,4 +49,6 @@ class RepositoryManager @Inject constructor(
     override fun moreMenus(): Single<List<BaseMoreModel>> =
         dummyRepository.moreMenus()
 
+    override fun search(keyword: String, page: Int, endImage: Boolean, endVideo: Boolean): Single<SearchResultModel> =
+        remoteRepository.search(keyword, page, endImage, endVideo)
 }

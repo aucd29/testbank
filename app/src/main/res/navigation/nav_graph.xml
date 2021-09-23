@@ -10,7 +10,6 @@
         android:name="com.example.testbank.view.main.home.HomeFragment"
         android:label="@string/label_home_fragment"
         tools:layout="@layout/fragment_home">
-
     </fragment>
 
     <fragment

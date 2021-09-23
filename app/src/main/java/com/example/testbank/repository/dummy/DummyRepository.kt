@@ -6,6 +6,8 @@ import com.example.testbank.repository.local.model.alarm.AlarmMenuModel
 import com.example.testbank.repository.local.model.alarm.AlarmSubjectModel
 import com.example.testbank.repository.local.model.alarm.BaseAlarmModel
 import com.example.testbank.repository.local.model.more.*
+import com.example.testbank.repository.local.model.search.SearchModel
+import com.example.testbank.repository.local.model.search.SearchResultModel
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Qualifier
@@ -228,4 +230,7 @@ class DummyRepository @Inject constructor(
 
             )
         }
+
+    override fun search(keyword: String, page: Int, endImage: Boolean, endVideo: Boolean): Single<SearchResultModel> =
+        Single.just(SearchResultModel())
 }

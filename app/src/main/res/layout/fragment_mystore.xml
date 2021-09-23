@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <!--<variable name="vm" type="com.example.testbank.view.main.more.MoreViewModel" />-->
+        <variable name="vm" type="com.example.testbank.view.main.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,11 +13,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mystore_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:bindItems="@{vm.likeItems}"
+            tools:listitem="@layout/item_mystore"
+            />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="마이스토어"
             android:gravity="center_vertical|center"
+            android:background="@android:color/white"
+            android:text="@string/mystore_no_data"
+            app:visibleOrGone="@{vm.likeItems.size() == 0}"
+            tools:visibility="gone"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

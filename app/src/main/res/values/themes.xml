@@ -36,7 +36,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="kakaoTabTextApppearance" parent="TextAppearance.Design.Tab">
+    <style name="kakaoTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">17sp</item>
         <item name="android:textStyle">bold</item>
     </style>

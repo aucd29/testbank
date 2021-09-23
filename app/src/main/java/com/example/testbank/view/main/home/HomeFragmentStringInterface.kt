@@ -14,12 +14,11 @@ class HomeFragmentString @Inject constructor(
     @ApplicationContext private val context: Context
 ) : HomeFragmentStringInterface {
     override fun tabLabel(position: Int): String {
-        val id = context.resources.getIdentifier("search_tab_menu_$position", "string", context.packageName)
-        return if (id != -1) {
+        val id = context.resources.getIdentifier("home_tab_menu_$position", "string", context.packageName)
+        return if (id != 0) {
             context.getString(id)
         } else {
             ""
         }
     }
-
 }

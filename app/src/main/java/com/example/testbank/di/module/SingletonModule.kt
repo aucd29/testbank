@@ -1,8 +1,10 @@
 package com.example.testbank.di.module
 
 import android.webkit.CookieManager
- import com.example.testbank.base.InitializerInterface
- import com.example.testbank.base.MyInitializer
+import com.example.testbank.base.EventInterface
+import com.example.testbank.base.InitializerInterface
+import com.example.testbank.base.MyEvent
+import com.example.testbank.base.MyInitializer
  import com.example.testbank.base.webview.CookieInterface
  import com.example.testbank.base.webview.MyCookieManager
  import com.example.testbank.deviceapi.system.MyNetworkStatus
@@ -14,8 +16,8 @@ import com.example.testbank.repository.RepositoryInterface
 import com.example.testbank.repository.RepositoryManager
 import com.example.testbank.repository.dummy.DummyRepository
 import com.example.testbank.repository.dummy.HiltDummyRepository
-import com.example.testbank.repository.remote.dto.HiltRemoteRepository
-import com.example.testbank.repository.remote.dto.RemoteRepository
+import com.example.testbank.repository.remote.HiltRemoteRepository
+import com.example.testbank.repository.remote.RemoteRepository
 import dagger.Binds
  import dagger.Module
  import dagger.Provides
@@ -45,6 +47,9 @@ object SingletonModule {
 
         @Binds
         fun bindCookieInterface(cookieManager: MyCookieManager): CookieInterface
+
+        @Binds
+        fun bindEventInterface(event: MyEvent): EventInterface
 
         ////////////////////////////////////////////////////////////////////////////////////
         //
