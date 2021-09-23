@@ -11,25 +11,18 @@ class MainViewModel : BaseViewModel() {
     val likeItems: LiveData<MutableList<SearchModel>>
         get() = _likeItems
 
-    fun addLike(model: SearchModel) {
+    fun toggleLike(model: SearchModel) {
         _likeItems.value?.let {
             _likeItems.value = it.toMutableList().apply {
                 model.toggleLike()
-                add(model)
+                if (model.isLike()) {
+                    add(model)
+                } else {
+                    remove(model)
+                }
+
+                Timber.d("[MAIN] TOGGLE $model, ${_likeItems.value?.size}")
             }
         }
-
-        Timber.d("[MAIN] ADD $model, ${_likeItems.value?.size}")
-    }
-
-    fun removeLike(model: SearchModel) {
-        _likeItems.value?.let {
-            _likeItems.value = it.toMutableList().apply {
-                model.toggleLike()
-                remove(model)
-            }
-        }
-
-        Timber.d("[MAIN] REMOVE $model, ${_likeItems.value?.size}")
     }
 }

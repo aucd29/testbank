@@ -7,6 +7,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.paging.PagedList
 import com.example.testbank.base.BaseViewModel
 import com.example.testbank.base.EventInterface
+import com.example.testbank.deviceapi.dialog.DialogModel
 import com.example.testbank.repository.local.model.search.SearchModel
 import com.example.testbank.repository.local.model.search.SearchPagedListManager
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,6 +21,7 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
     private val stateHandle: SavedStateHandle,
     private val pagedListManager: SearchPagedListManager,
+    private val string: SearchStringInterface,
     event: EventInterface
 ) : BaseViewModel(),
     EventInterface by event
@@ -30,6 +32,12 @@ class SearchViewModel @Inject constructor(
     private var isFirstLoad = true
 
     fun search() {
+        if (keyword.value.isNullOrEmpty()) {
+            dialog(DialogModel(message = string.pleaseInsertKeyword()))
+            return
+        }
+
+        sendEvent(EVENT_HIDE_KEYBOARD)
         Timber.d("[SEARCH] ${keyword.value}")
         stateHandle.set(KEY_SEARCH_KEYWORD, keyword.value)
 
@@ -66,6 +74,7 @@ class SearchViewModel @Inject constructor(
     companion object {
         const val KEY_SEARCH_KEYWORD = "key-search-keyword"
 
-        const val EVENT_LIKE = 0xff00
+        const val EVENT_LIKE = 0xFF00
+        const val EVENT_HIDE_KEYBOARD = 0XFF01
     }
 }

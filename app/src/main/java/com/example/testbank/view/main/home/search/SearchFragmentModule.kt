@@ -3,6 +3,7 @@ package com.example.testbank.view.main.home.search
 import com.example.testbank.R
 import com.example.testbank.base.adapter.BaseTypePagedListAdapter
 import com.example.testbank.repository.local.model.search.SearchModel
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,4 +32,11 @@ object SearchFragmentModule {
 @Module
 @InstallIn(ViewModelComponent::class)
 object SearchViewModelModule {
+
+    @Module
+    @InstallIn(ViewModelComponent::class)
+    interface BindModule {
+        @Binds
+        fun bindStringInterface(string: SearchString): SearchStringInterface
+    }
 }

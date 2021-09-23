@@ -77,7 +77,7 @@
             app:imageId="@{item.like ? `ic_star_yellow_24dp` : `ic_star_border_yellow_24dp`}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:onClick="@{() -> vm.removeLike(item)}"
+            android:onClick="@{() -> vm.toggleLike(item)}"
             tools:src="@drawable/ic_star_border_yellow_24dp"
             />
 

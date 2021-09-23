@@ -2,57 +2,47 @@ package com.example.testbank.view.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.testbank.R
 import com.example.testbank.base.BaseActivity
 import com.example.testbank.databinding.ActivityMainBinding
 import com.example.testbank.deviceapi.user.UserViewModel
-import com.example.testbank.view.main.alarm.AlarmFragment
-import com.example.testbank.view.main.home.HomeFragment
-import com.example.testbank.view.main.more.MoreFragment
-import com.example.testbank.view.main.service.ServiceFragment
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val userViewModel: UserViewModel by viewModels()
 
+    @Inject @HiltMainActivity
+    lateinit var mainAdapter: dagger.Lazy<FragmentPagerAdapter>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initViewModel()
-        initNavController()
-    }
+        binding.apply {
+            vpMain.adapter = mainAdapter.get()
+            bnvMain.setOnNavigationItemSelectedListener {
+                vpMain.currentItem = when (it.itemId) {
+                    R.id.home_fragment ->
+                         0
 
-    override fun onBackPressed() {
-        val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container)
-        navHost?.let { navFragment ->
-            navFragment.childFragmentManager.primaryNavigationFragment?.let { fragment ->
-                when (fragment) {
-                    is HomeFragment,
-                    is ServiceFragment,
-                    is AlarmFragment,
-                    is MoreFragment ->
-                        finish()
+                    R.id.service_fragment ->
+                        1
+
+                    R.id.alarm_fragment ->
+                        2
 
                     else ->
-                        super.onBackPressed()
+                        3
                 }
+
+                true
             }
         }
-    }
 
-    private fun initViewModel() {
         userViewModel.init()
-    }
-
-    private fun initNavController() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
-        val navController = navHostFragment.findNavController()
-
-        binding.bnvMain.setupWithNavController(navController)
     }
 
 }
