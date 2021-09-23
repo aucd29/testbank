@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class HiltRepository
+annotation class HiltRepositoryManager
 
 interface RepositoryInterface {
     /**

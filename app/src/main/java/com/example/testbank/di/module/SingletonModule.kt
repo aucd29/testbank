@@ -9,7 +9,7 @@ import android.webkit.CookieManager
  import com.example.testbank.deviceapi.system.NetworkStatusInterface
  import com.example.testbank.deviceapi.vibrator.MyVibrator
  import com.example.testbank.deviceapi.vibrator.VibratorInterface
-import com.example.testbank.repository.HiltRepository
+import com.example.testbank.repository.HiltRepositoryManager
 import com.example.testbank.repository.RepositoryInterface
 import com.example.testbank.repository.RepositoryManager
 import com.example.testbank.repository.dummy.DummyRepository
@@ -48,11 +48,11 @@ object SingletonModule {
 
         ////////////////////////////////////////////////////////////////////////////////////
         //
-        // 레파지토리
+        // REPOSITORY
         //
         ////////////////////////////////////////////////////////////////////////////////////
 
-        @HiltRepository
+        @HiltRepositoryManager
         @Binds
         fun bindRepositoryInterface(manager: RepositoryManager): RepositoryInterface
 
