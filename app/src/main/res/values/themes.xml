@@ -35,4 +35,10 @@
         <item name="android:textColor">@color/color_black</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="kakaoTabTextApppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

@@ -25,9 +25,13 @@ class AlarmFragment : BaseFragment<FragmentAlarmBinding>(R.layout.fragment_alarm
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.vm = viewmodel
-        adapter.viewModel = viewmodel
-        binding.alarmRecycler.adapter = adapter
+        binding.apply {
+            vm = viewmodel
+
+            alarmRecycler.adapter = adapter.apply {
+                viewModel = viewmodel
+            }
+        }
 
         viewmodel.init()
     }

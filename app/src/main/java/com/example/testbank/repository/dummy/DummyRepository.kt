@@ -13,7 +13,7 @@ import javax.inject.Singleton
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class HiltDummy
+annotation class HiltDummyRepository
 
 @Singleton
 class DummyRepository @Inject constructor(

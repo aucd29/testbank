@@ -1,9 +1,9 @@
 package com.example.testbank.repository
 
-import com.example.testbank.repository.dummy.HiltDummy
+import com.example.testbank.repository.dummy.HiltDummyRepository
 import com.example.testbank.repository.local.model.alarm.BaseAlarmModel
 import com.example.testbank.repository.local.model.more.BaseMoreModel
-import com.example.testbank.repository.remote.dto.HiltRemote
+import com.example.testbank.repository.remote.dto.HiltRemoteRepository
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Qualifier
@@ -29,8 +29,8 @@ interface RepositoryInterface {
 
 @Singleton
 class RepositoryManager @Inject constructor(
-    @HiltDummy private val dummyRepository: RepositoryInterface,
-    @HiltRemote private val remoteRepository: RepositoryInterface
+    @HiltDummyRepository private val dummyRepository: RepositoryInterface,
+    @HiltRemoteRepository private val remoteRepository: RepositoryInterface
 ) : RepositoryInterface {
     override fun alarmMenus(): Single<List<BaseAlarmModel>> =
         dummyRepository.alarmMenus()

@@ -13,8 +13,8 @@ import com.example.testbank.repository.HiltRepositoryManager
 import com.example.testbank.repository.RepositoryInterface
 import com.example.testbank.repository.RepositoryManager
 import com.example.testbank.repository.dummy.DummyRepository
-import com.example.testbank.repository.dummy.HiltDummy
-import com.example.testbank.repository.remote.dto.HiltRemote
+import com.example.testbank.repository.dummy.HiltDummyRepository
+import com.example.testbank.repository.remote.dto.HiltRemoteRepository
 import com.example.testbank.repository.remote.dto.RemoteRepository
 import dagger.Binds
  import dagger.Module
@@ -56,11 +56,11 @@ object SingletonModule {
         @Binds
         fun bindRepositoryInterface(manager: RepositoryManager): RepositoryInterface
 
-        @HiltDummy
+        @HiltDummyRepository
         @Binds
         fun bindDummyRepository(dummyRepository: DummyRepository): RepositoryInterface
 
-        @HiltRemote
+        @HiltRemoteRepository
         @Binds
         fun bindRemoteRepository(remoteRepository: RemoteRepository): RepositoryInterface
     }

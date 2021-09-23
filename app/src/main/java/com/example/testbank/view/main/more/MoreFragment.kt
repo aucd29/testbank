@@ -31,10 +31,11 @@ class MoreFragment : BaseFragment<FragmentMoreBinding>(R.layout.fragment_more) {
         binding.apply {
             vm = viewmodel
             userVm = userViewModel
-        }
 
-        adapter.viewModel = viewmodel
-        binding.moreRecycler.adapter = adapter
+            moreRecycler.adapter = adapter.apply {
+                viewModel = viewmodel
+            }
+        }
 
         viewmodel.init()
     }
