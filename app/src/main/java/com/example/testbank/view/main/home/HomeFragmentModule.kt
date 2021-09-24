@@ -11,7 +11,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.FragmentComponent
-import dagger.hilt.android.components.ViewModelComponent
 import javax.inject.Qualifier
 
 @Qualifier
@@ -30,10 +29,8 @@ object HomeFragmentModule {
 
             override fun createFragment(position: Int): Fragment =
                 when (position) {
-                    0 ->
-                        SearchFragment()
-                    else ->
-                        MyStoreFragment()
+                    0 -> SearchFragment()
+                    else -> MyStoreFragment()
                 }
         }
 
@@ -43,9 +40,4 @@ object HomeFragmentModule {
         @Binds
         fun bindHomeFragmentStringInterface(string: HomeFragmentString): HomeFragmentStringInterface
     }
-}
-
-@Module
-@InstallIn(ViewModelComponent::class)
-object HomeViewModelModule {
 }

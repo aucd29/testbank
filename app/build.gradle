@@ -125,6 +125,10 @@ dependencies {
     // page indicator
     implementation 'com.romandanylyk:pageindicatorview:1.0.3'
 
+    // tab synced recycler
+    // https://github.com/crocsandcoffee/tab-synced-recycler-view
+    implementation "com.github.omid-io:tab-synced-recycler-view:1.1"
+
     // TEST
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-inline:3.3.3' //Mock

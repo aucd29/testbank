@@ -7,7 +7,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.FragmentComponent
-import dagger.hilt.android.components.ViewModelComponent
 import javax.inject.Qualifier
 
 @Qualifier
@@ -21,14 +20,4 @@ object MyStoreFragmentModule {
     @Provides
     fun provideTypeListAdapter(): BaseTypeListAdapter<SearchModel> =
         BaseTypeListAdapter(R.layout.item_mystore)
-
-    @Module
-    @InstallIn(FragmentComponent::class)
-    interface BindModule {
-    }
-}
-
-@Module
-@InstallIn(ViewModelComponent::class)
-object MyStoreViewModelModule {
 }

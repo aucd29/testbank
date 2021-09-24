@@ -9,6 +9,7 @@ import com.example.testbank.base.adapter.BaseTypeListAdapter
 import com.example.testbank.base.decoration.VerticalMarginItemDecoration
 import com.example.testbank.databinding.FragmentServiceBinding
 import com.example.testbank.repository.local.model.service.BaseServiceModel
+import com.omidio.tabsyncedrecyclerview.LinearLayoutManagerWithSmoothScroller
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -17,9 +18,11 @@ class ServiceFragment : BaseFragment<FragmentServiceBinding>(R.layout.fragment_s
     private val viewmodel: ServiceViewModel by viewModels()
 
     @Inject @HiltServiceFragment
-    lateinit var adapter: BaseTypeListAdapter<BaseServiceModel>
+    lateinit var serviceAdapter: dagger.Lazy<BaseTypeListAdapter<BaseServiceModel>>
     @Inject @HiltServiceFragment
-    lateinit var marginDecoration: VerticalMarginItemDecoration
+    lateinit var marginDecoration: dagger.Lazy<VerticalMarginItemDecoration>
+    @Inject @HiltServiceFragment
+    lateinit var linearLayoutManager: dagger.Lazy<LinearLayoutManagerWithSmoothScroller>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,9 +30,16 @@ class ServiceFragment : BaseFragment<FragmentServiceBinding>(R.layout.fragment_s
         binding.apply {
             vm = viewmodel
 
-            serviceRecycler.addItemDecoration(marginDecoration)
-            serviceRecycler.adapter = adapter.apply {
-                viewModel = viewmodel
+            serviceRecycler.apply {
+                addItemDecoration(marginDecoration.get())
+                addOnScrollListener(TabSyncedScrollListener())
+                layoutManager = linearLayoutManager.get()
+
+                adapter = serviceAdapter.get().apply {
+                    viewModel = viewmodel
+                }
+
+                setTabLayout(serviceTab)
             }
         }
 

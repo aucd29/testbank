@@ -16,5 +16,4 @@ class SearchString @Inject constructor(
 ) : SearchStringInterface {
     override fun pleaseInsertKeyword(): String =
         context.getString(R.string.search_pls_insert_keyword)
-
 }

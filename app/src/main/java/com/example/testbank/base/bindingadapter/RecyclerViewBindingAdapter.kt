@@ -5,6 +5,7 @@ import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.omidio.tabsyncedrecyclerview.TabSyncedRecyclerView
 import timber.log.Timber
 
 // https://stackoverflow.com/questions/56857010/type-inference-failed-but-cannot-check-for-instance-of-erased-type
@@ -54,4 +55,12 @@ fun <T> RecyclerView.bindItems(items: PagedList<T>?, scrollToTop: Boolean) {
 @BindingAdapter("bindSmoothScrollToPosition")
 fun RecyclerView.bindSmoothScrollToPosition(position: Int) {
     smoothScrollToPosition(position)
+}
+
+// https://github.com/crocsandcoffee/tab-synced-recycler-view
+@BindingAdapter("bindTabIndex")
+fun TabSyncedRecyclerView.bindTabIndex(indexes: List<Int>?) {
+    indexes?.let {
+        setCountItemsByTabIndex(it)
+    }
 }

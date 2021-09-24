@@ -22,11 +22,6 @@ object SearchFragmentModule {
     @Provides
     fun providePagedListAdapter(): BaseTypePagedListAdapter<SearchModel> =
         BaseTypePagedListAdapter(R.layout.item_search)
-            
-    @Module
-    @InstallIn(FragmentComponent::class)
-    interface BindModule {
-    }
 }
 
 @Module

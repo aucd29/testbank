@@ -1,7 +1,6 @@
 package com.example.testbank.view.main.more
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -14,9 +13,6 @@ import com.example.testbank.repository.local.model.more.BaseMoreModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 @AndroidEntryPoint
 class MoreFragment : BaseFragment<FragmentMoreBinding>(R.layout.fragment_more) {
     private val viewmodel: MoreViewModel by viewModels()

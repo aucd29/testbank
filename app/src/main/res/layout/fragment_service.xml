@@ -34,7 +34,7 @@
                     >
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_service_title"
+                        android:id="@+id/service_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/service_title"
@@ -46,15 +46,23 @@
                         android:paddingBottom="20dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toTopOf="@+id/tl_service_tab"
+                        app:layout_constraintBottom_toTopOf="@+id/service_tab"
                         />
 
                     <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/tl_service_tab"
-                        android:layout_width="match_parent"
+                        android:id="@+id/service_tab"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
+                        android:textAllCaps="false"
+                        app:tabRippleColor="@null"
+                        app:tabIndicatorFullWidth="false"
+                        app:tabMode="fixed"
+                        app:tabPaddingEnd="8dp"
+                        app:tabPaddingStart="8dp"
+                        android:tabStripEnabled="true"
+                        app:tabGravity="start"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         >
@@ -88,24 +96,25 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
+                    android:id="@+id/service_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    android:visibility="invisible"
                     />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.omidio.tabsyncedrecyclerview.TabSyncedRecyclerView
             android:id="@+id/service_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:bindItems="@{vm.items}"
+            app:bindTabIndex="@{vm.tabIndexes}"
             tools:itemCount="20"
             tools:listitem="@layout/item_service_menu1"
             />

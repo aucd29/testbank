@@ -12,8 +12,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.FragmentComponent
-import dagger.hilt.android.components.ViewModelComponent
-import io.reactivex.Single
 import javax.inject.Qualifier
 
 @Qualifier
@@ -36,10 +34,4 @@ object MoreFragmentModule {
             ),
             null
         )
-}
-
-@Module
-@InstallIn(ViewModelComponent::class)
-object MoreViewModelModule {
-
 }

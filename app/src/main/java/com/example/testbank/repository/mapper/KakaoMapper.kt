@@ -32,5 +32,4 @@ fun KakaoSearch<*>.toSearchModels(): List<SearchModel>? =
             else ->
                 error("unknown type")
         }
-
     }

@@ -57,9 +57,3 @@ object AlarmFragmentModule {
             }
         }
 }
-
-@Module
-@InstallIn(ViewModelComponent::class)
-object AlarmViewModelModule {
-
-}

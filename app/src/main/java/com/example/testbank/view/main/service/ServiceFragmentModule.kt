@@ -1,6 +1,9 @@
 package com.example.testbank.view.main.service
 
 import android.content.Context
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.testbank.R
 import com.example.testbank.base.adapter.BaseTypeListAdapter
@@ -9,11 +12,13 @@ import com.example.testbank.base.extension.dpToPx
 import com.example.testbank.databinding.ItemServiceScrollBannerBinding
 import com.example.testbank.repository.local.model.service.BaseServiceModel
 import com.example.testbank.repository.local.model.service.ServiceScrollBannerItem
+import com.google.android.material.tabs.TabLayout
+import com.omidio.tabsyncedrecyclerview.LinearLayoutManagerWithSmoothScroller
+import com.omidio.tabsyncedrecyclerview.TabSyncedRecyclerView
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.FragmentComponent
-import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import timber.log.Timber
 import javax.inject.Named
@@ -44,15 +49,18 @@ object ServiceFragmentModule {
             when (binding) {
                 is ItemServiceScrollBannerBinding -> {
                     binding.itemServiceScrollbannerVp.apply {
-                        adapter = bannerAdapter
-                        registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
-                            override fun onPageSelected(position: Int) {
-                                Timber.d("[SERVICE] SCROLL BANNER $position")
-                                binding.pageIndicator.selection = position
-                            }
-                        })
+                        if (adapter == null) {
+                            adapter = bannerAdapter
+                            registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+                                override fun onPageSelected(position: Int) {
+                                    Timber.d("[SERVICE] CHANGE BANNER $position")
+                                    binding.pageIndicator.selection = position
+                                }
+                            })
+
+                            binding.pageIndicator.selection = 0
+                        }
                     }
-                    binding.pageIndicator.selection = 0
                 }
             }
         }
@@ -64,17 +72,15 @@ object ServiceFragmentModule {
 
     @HiltServiceFragment
     @Provides
+    fun provideLayoutManager(fragment: Fragment) = LinearLayoutManagerWithSmoothScroller(
+        fragment.requireContext(),
+        RecyclerView.VERTICAL,
+        false
+    )
+
+    @HiltServiceFragment
+    @Provides
     fun provideMarginDecoration(@ApplicationContext context: Context) = VerticalMarginItemDecoration(
         lastSpaceBottom = context.dpToPx(200f)
     )
-
-    @Module
-    @InstallIn(FragmentComponent::class)
-    interface BindModule {
-    }
-}
-
-@Module
-@InstallIn(ViewModelComponent::class)
-object ServiceViewModelModule {
 }

@@ -2,7 +2,6 @@ package com.example.testbank.view.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.testbank.R
 import com.example.testbank.base.BaseActivity
@@ -17,7 +16,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val userViewModel: UserViewModel by viewModels()
 
     @Inject @HiltMainActivity
-    lateinit var mainAdapter: dagger.Lazy<FragmentStateAdapter> //dagger.Lazy<FragmentPagerAdapter>
+    lateinit var mainAdapter: dagger.Lazy<FragmentStateAdapter>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
