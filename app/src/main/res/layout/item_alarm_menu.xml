@@ -8,7 +8,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/item_more_menu_container"
+        android:id="@+id/item_alarm_menu_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="?android:attr/selectableItemBackground"
@@ -16,7 +16,7 @@
         >
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/item_alarm_icon"
+            android:id="@+id/item_alarm_menu_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -38,7 +38,7 @@
             android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="@color/color_grey_900"
-            app:layout_constraintStart_toEndOf="@id/item_alarm_icon"
+            app:layout_constraintStart_toEndOf="@id/item_alarm_menu_icon"
             app:layout_constraintTop_toTopOf="parent"
             android:text="@{item.title}"
             tools:text="@tools:sample/last_names"
@@ -74,9 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                >
-
-            </LinearLayout>
+                />
 
         </net.cachapa.expandablelayout.ExpandableLayout>
 

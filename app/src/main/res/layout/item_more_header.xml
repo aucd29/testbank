@@ -17,21 +17,6 @@
         android:clipToPadding="false"
         >
 
-        <!--<androidx.appcompat.widget.AppCompatTextView-->
-        <!--    android:id="@+id/item_more_header_name"-->
-        <!--    android:layout_width="wrap_content"-->
-        <!--    android:layout_height="wrap_content"-->
-        <!--    android:textSize="16dp"-->
-        <!--    android:textStyle="bold"-->
-        <!--    android:textColor="@color/color_grey_900"-->
-        <!--    android:drawableEnd="@drawable/ic_baseline_chevron_right_24"-->
-        <!--    app:layout_constraintStart_toStartOf="parent"-->
-        <!--    app:layout_constraintTop_toTopOf="parent"-->
-        <!--    android:text="@{item.userName}"-->
-        <!--    tools:text="@tools:sample/full_names"-->
-        <!--    />-->
-
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/item_more_header_event"
             android:layout_width="match_parent"
@@ -51,6 +36,7 @@
             app:visibleOrGone="@{item.banner != null}"
             android:contentDescription="@{@string/description_go_to_event(item.banner.title)}"
             tools:text="@tools:sample/lorem/random"
+            tools:backgroundTint="@color/color_grey_300"
             />
 
         <androidx.appcompat.widget.AppCompatTextView

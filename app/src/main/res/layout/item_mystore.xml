@@ -11,7 +11,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/item_search_container"
+        android:id="@+id/item_mystore_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="?android:attr/selectableItemBackground"
@@ -20,7 +20,7 @@
         >
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/item_search_thumbnail"
+            android:id="@+id/item_mystore_thumbnail"
             android:layout_width="160dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
@@ -31,7 +31,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/item_search_display_site_name"
+            android:id="@+id/item_mystore_display_site_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
@@ -42,15 +42,15 @@
             android:maxLines="3"
             android:ellipsize="end"
             android:textColor="@color/color_grey_900"
-            app:layout_constraintStart_toEndOf="@id/item_search_thumbnail"
-            app:layout_constraintEnd_toStartOf="@+id/item_search_like"
+            app:layout_constraintStart_toEndOf="@id/item_mystore_thumbnail"
+            app:layout_constraintEnd_toStartOf="@+id/item_mystore_like"
             app:layout_constraintTop_toTopOf="parent"
             android:text="@{item.displaySiteName}"
             tools:text="@tools:sample/lorem/random"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/item_search_datetime"
+            android:id="@+id/item_mystore_datetime"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
@@ -58,15 +58,15 @@
             android:maxLines="3"
             android:ellipsize="end"
             android:textColor="@color/color_grey_600"
-            app:layout_constraintStart_toEndOf="@id/item_search_thumbnail"
-            app:layout_constraintTop_toBottomOf="@id/item_search_display_site_name"
-            app:layout_constraintEnd_toStartOf="@+id/item_search_like"
+            app:layout_constraintStart_toEndOf="@id/item_mystore_thumbnail"
+            app:layout_constraintTop_toBottomOf="@id/item_mystore_display_site_name"
+            app:layout_constraintEnd_toStartOf="@+id/item_mystore_like"
             android:text="@{item.dateString()}"
             tools:text="@tools:sample/date/mmddyy"
             />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/item_search_like"
+            android:id="@+id/item_mystore_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="10dp"

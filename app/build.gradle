@@ -122,6 +122,9 @@ dependencies {
     // expandable layout
     implementation 'com.github.cachapa:ExpandableLayout:2.9.2'
 
+    // page indicator
+    implementation 'com.romandanylyk:pageindicatorview:1.0.3'
+
     // TEST
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-inline:3.3.3' //Mock

@@ -1,0 +1,9 @@
+<resources>
+    <string name="service_title">상품/서비스</string>
+    <string name="service_tab_all">전체</string>
+    <string name="service_tab_savings">예적금</string>
+    <string name="service_tab_loan">대출</string>
+    <string name="service_tab_service">서비스</string>
+    <string name="service_tab_alliance">제휴</string>
+    <string name="service_tab_mini">mini</string>
+</resources>

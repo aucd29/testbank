@@ -5,6 +5,7 @@ import com.example.testbank.repository.local.model.alarm.BaseAlarmModel
 import com.example.testbank.repository.local.model.more.BaseMoreModel
 import com.example.testbank.repository.local.model.search.SearchModel
 import com.example.testbank.repository.local.model.search.SearchResultModel
+import com.example.testbank.repository.local.model.service.BaseServiceModel
 import com.example.testbank.repository.mapper.toSearchModels
 import com.example.testbank.repository.remote.service.KakaoRestSearchService
 import io.reactivex.Single
@@ -21,6 +22,9 @@ annotation class HiltRemoteRepository
 class RemoteRepository @Inject constructor(
     private val searchService: KakaoRestSearchService
 ) : RepositoryInterface {
+    override fun serviceMenus(): Single<List<BaseServiceModel>> =
+        Single.just(emptyList())
+
     override fun alarmMenus(): Single<List<BaseAlarmModel>> =
         Single.just(emptyList())
 

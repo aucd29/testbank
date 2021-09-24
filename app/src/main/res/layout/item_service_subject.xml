@@ -4,11 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="item" type="com.example.testbank.repository.local.model.alarm.AlarmSubjectModel" />
+        <variable name="item" type="com.example.testbank.repository.local.model.service.ServiceSubjectModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/item_alarm_subject_container"
+        android:id="@+id/item_more_subject_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
@@ -17,9 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:textSize="13dp"
+            android:paddingTop="50dp"
+            android:paddingBottom="20dp"
+            android:textSize="19dp"
             android:textStyle="bold"
             android:textColor="@color/color_grey_900"
             app:layout_constraintStart_toStartOf="parent"
