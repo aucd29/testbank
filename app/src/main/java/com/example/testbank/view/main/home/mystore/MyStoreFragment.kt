@@ -26,8 +26,11 @@ class MyStoreFragment : BaseFragment<FragmentMystoreBinding>(R.layout.fragment_m
         binding.apply {
             vm = mainViewModel
 
-            mystoreRecycler.adapter = mystoreAdapter.get().apply {
-                viewModel = mainViewModel
+            mystoreRecycler.apply {
+                itemAnimator = null
+                adapter = mystoreAdapter.get().apply {
+                    viewModel = mainViewModel
+                }
             }
         }
     }
