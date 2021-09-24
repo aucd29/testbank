@@ -25,29 +25,11 @@ object MainActivityModule {
     @HiltMainActivity
     @Provides
     fun provideFragmentPagerAdapter(activity: FragmentActivity) =
-        object: FragmentPagerAdapter(activity.supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-            // override fun getItemCount(): Int =
-            //     4
-            //
-            // override fun createFragment(position: Int): Fragment =
-            //     when (position) {
-            //         0 ->
-            //             HomeFragment()
-            //
-            //         1 ->
-            //             ServiceFragment()
-            //
-            //         2 ->
-            //             AlarmFragment()
-            //
-            //         else ->
-            //             MoreFragment()
-            //     }
-
-            override fun getCount(): Int =
+        object: FragmentStateAdapter(activity) {
+            override fun getItemCount(): Int =
                 4
 
-            override fun getItem(position: Int): Fragment =
+            override fun createFragment(position: Int): Fragment =
                 when (position) {
                     0 ->
                         HomeFragment()
@@ -61,8 +43,45 @@ object MainActivityModule {
                     else ->
                         MoreFragment()
                 }
-
         }
+
+    // object: FragmentPagerAdapter(activity.supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+    //     // override fun getItemCount(): Int =
+    //     //     4
+    //     //
+    //     // override fun createFragment(position: Int): Fragment =
+    //     //     when (position) {
+    //     //         0 ->
+    //     //             HomeFragment()
+    //     //
+    //     //         1 ->
+    //     //             ServiceFragment()
+    //     //
+    //     //         2 ->
+    //     //             AlarmFragment()
+    //     //
+    //     //         else ->
+    //     //             MoreFragment()
+    //     //     }
+    //
+    //     override fun getCount(): Int =
+    //         4
+    //
+    //     override fun getItem(position: Int): Fragment =
+    //         when (position) {
+    //             0 ->
+    //                 HomeFragment()
+    //
+    //             1 ->
+    //                 ServiceFragment()
+    //
+    //             2 ->
+    //                 AlarmFragment()
+    //
+    //             else ->
+    //                 MoreFragment()
+    //         }
+    // }
             
     @Module
     @InstallIn(ActivityComponent::class)

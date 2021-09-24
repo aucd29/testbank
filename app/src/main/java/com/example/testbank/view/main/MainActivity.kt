@@ -16,27 +16,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val userViewModel: UserViewModel by viewModels()
 
     @Inject @HiltMainActivity
-    lateinit var mainAdapter: dagger.Lazy<FragmentPagerAdapter>
+    lateinit var mainAdapter: dagger.Lazy<FragmentStateAdapter> //dagger.Lazy<FragmentPagerAdapter>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding.apply {
             vpMain.adapter = mainAdapter.get()
+            vpMain.offscreenPageLimit = mainAdapter.get().itemCount
+            vpMain.isUserInputEnabled = false
             bnvMain.setOnNavigationItemSelectedListener {
-                vpMain.currentItem = when (it.itemId) {
-                    R.id.home_fragment ->
-                         0
-
-                    R.id.service_fragment ->
-                        1
-
-                    R.id.alarm_fragment ->
-                        2
-
-                    else ->
-                        3
-                }
+                vpMain.setCurrentItem(when (it.itemId) {
+                    R.id.home_fragment -> 0
+                    R.id.service_fragment -> 1
+                    R.id.alarm_fragment -> 2
+                    else -> 3
+                }, false)
 
                 true
             }
