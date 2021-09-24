@@ -25,7 +25,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             vpMain.adapter = mainAdapter.get()
             vpMain.offscreenPageLimit = mainAdapter.get().itemCount
             vpMain.isUserInputEnabled = false
-            bnvMain.setOnNavigationItemSelectedListener {
+            bnvMain.setOnItemSelectedListener {
                 vpMain.setCurrentItem(when (it.itemId) {
                     R.id.home_fragment -> 0
                     R.id.service_fragment -> 1
