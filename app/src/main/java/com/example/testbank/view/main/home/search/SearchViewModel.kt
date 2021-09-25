@@ -29,6 +29,7 @@ class SearchViewModel @Inject constructor(
     val keyword: MutableLiveData<String> = stateHandle.getLiveData(KEY_SEARCH_KEYWORD, "카카오뱅크")
     val searchItems = ObservableField<PagedList<SearchModel>>()
     val isSearchEmpty = ObservableBoolean(false)
+    val isKakaoLabel = ObservableBoolean(true)
     private var isFirstLoad = true
 
     fun search() {
@@ -37,6 +38,7 @@ class SearchViewModel @Inject constructor(
             return
         }
 
+        isKakaoLabel.set(false)
         sendEvent(EVENT_HIDE_KEYBOARD)
         Timber.d("[SEARCH] ${keyword.value}")
         stateHandle.set(KEY_SEARCH_KEYWORD, keyword.value)

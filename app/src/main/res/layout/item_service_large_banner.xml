@@ -11,6 +11,9 @@
         android:id="@+id/item_large_banner_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         app:backgroundColor="@{item.backgroundColor}"
         tools:background="@color/color_00a2a2"
         >
@@ -49,6 +52,7 @@
             android:textStyle="bold"
             android:ellipsize="end"
             android:maxLines="3"
+            android:layout_marginEnd="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_large_banner_title"
@@ -57,7 +61,6 @@
             tools:text="@tools:sample/lorem/random"
             tools:textColor="@color/color_white"
             />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

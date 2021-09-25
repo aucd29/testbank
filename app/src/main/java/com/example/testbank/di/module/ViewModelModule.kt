@@ -25,6 +25,6 @@ object ViewModelModule {
 
     }
 
-    const val LOAD_MORE_SIZE = 30
-    const val LOAD_FIRST_SIZE = 30
+    const val LOAD_MORE_SIZE = 60
+    const val LOAD_FIRST_SIZE = 60
 }

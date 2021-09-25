@@ -61,6 +61,7 @@ class SearchDataSource @Inject constructor(
                     dataLoadedSubject.onNext(list.size)
                 }
             }, {
+                isLoadAfter = false
                 Timber.e(it)
                 callback.onResult(listOf(), 0, 1)
                 dataLoadedSubject.onNext(0)
@@ -77,9 +78,9 @@ class SearchDataSource @Inject constructor(
             return
         }
 
-        Timber.d("[SEARCH] LOAD AFTER '$requestParams' = ${lastNumber.get()}, ${params.requestedLoadSize}")
+        Timber.d("[SEARCH] LOAD AFTER '$requestParams' = ${lastNumber.get()}, ${params.requestedLoadSize}, PAGE: ${lastNumber.get() / params.requestedLoadSize}")
 
-        disposable += remoteRepository.search(requestParams ?: "", 0)
+        disposable += remoteRepository.search(requestParams ?: "", lastNumber.get() / params.requestedLoadSize)
             .subscribe({
                 it.list?.let { list ->
                     addLastNum(list.size)
@@ -87,6 +88,7 @@ class SearchDataSource @Inject constructor(
                     callback.onResult(list)
                 }
             }, {
+                isLoadAfter = false
                 Timber.e(it)
                 callback.onResult(emptyList())
             })

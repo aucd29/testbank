@@ -21,6 +21,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.Testbank.Splash">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/color_kakao</item>
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
     <style name="Theme.Testbank.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.Testbank.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 

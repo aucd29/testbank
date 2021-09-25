@@ -50,6 +50,7 @@ class DummyRepository @Inject constructor(
                         )
                     )
                 ),
+
                 ServiceSubjectModel(
                     id = index++,
                     title = "예금*적금"
@@ -109,6 +110,8 @@ class DummyRepository @Inject constructor(
                     backgroundColor = "#8be4e4",
                     textColor = "#000000"
                 ),
+
+
                 ServiceSubjectModel(
                     id = index++,
                     title = "대출"
@@ -140,6 +143,7 @@ class DummyRepository @Inject constructor(
                     rate = "연 3.52%",
                     rateBadge = "최저",
                     rateColor = "#395bbf",
+                    isLast = true,
                 ),
                 ServiceBannerModel(
                     id = index++,
@@ -148,6 +152,8 @@ class DummyRepository @Inject constructor(
                     image = "",
                     backgroundColor = "#FF018786"
                 ),
+
+
                 ServiceSubjectModel(
                     id = index++,
                     title = "서비스"
@@ -166,6 +172,7 @@ class DummyRepository @Inject constructor(
                     id = index++,
                     title = "해외송금 받기",
                     subTitle = "지금방문 없이 간편하게",
+                    isLast = true,
                 ),
                 ServiceBannerModel(
                     id = index++,
@@ -174,6 +181,8 @@ class DummyRepository @Inject constructor(
                     image = "",
                     backgroundColor = "#395bbf"
                 ),
+
+
                 ServiceSubjectModel(
                     id = index++,
                     title = "제휴서비스"
@@ -358,8 +367,8 @@ class DummyRepository @Inject constructor(
                     userName = "아무개",
                     banner = MoreHeaderEventBanner(
                         title = "제휴 신용카트 9월 이벤트",
-                        backgroundColor = "#FF9800",
-                        textColor = "#FFFFFF",
+                        backgroundColor = "#ececec",
+                        textColor = "#000000",
                         startIcon = null
                     )
                 ),
