@@ -1,5 +1,6 @@
 package com.example.testbank.repository.remote
 
+import com.example.testbank.base.dummy.Dummy
 import com.example.testbank.repository.local.model.search.SearchModel
 import com.example.testbank.repository.remote.dto.*
 import com.example.testbank.repository.remote.service.KakaoRestSearchService
@@ -20,8 +21,8 @@ class TestRemoteRepository : BaseTest() {
     fun `검색과 우선순위 변경 확인`() {
         // given
         searchService = mock {
-            on { image(any(), any(), any(), any()) } doReturn Single.just(dummyImageDto())
-            on { vclip(any(), any(), any(), any()) } doReturn Single.just(dummyVclipDto())
+            on { image(any(), any(), any(), any()) } doReturn Single.just(Dummy.imageDto())
+            on { vclip(any(), any(), any(), any()) } doReturn Single.just(Dummy.vclipDto())
         }
 
         // when
@@ -40,8 +41,8 @@ class TestRemoteRepository : BaseTest() {
     fun `image 결과 중 isEnd 값 true`() {
         // given
         searchService = mock {
-            on { image(any(), any(), any(), any()) } doReturn Single.just(dummyImageDto(true))
-            on { vclip(any(), any(), any(), any()) } doReturn Single.just(dummyVclipDto())
+            on { image(any(), any(), any(), any()) } doReturn Single.just(Dummy.imageDto(true))
+            on { vclip(any(), any(), any(), any()) } doReturn Single.just(Dummy.vclipDto())
         }
 
         // when
@@ -56,8 +57,8 @@ class TestRemoteRepository : BaseTest() {
     fun `vclip 결과 중 isEnd 값 true`() {
         // given
         searchService = mock {
-            on { image(any(), any(), any(), any()) } doReturn Single.just(dummyImageDto())
-            on { vclip(any(), any(), any(), any()) } doReturn Single.just(dummyVclipDto(true))
+            on { image(any(), any(), any(), any()) } doReturn Single.just(Dummy.imageDto())
+            on { vclip(any(), any(), any(), any()) } doReturn Single.just(Dummy.vclipDto(true))
         }
 
         // when
@@ -77,7 +78,7 @@ class TestRemoteRepository : BaseTest() {
         }
         searchService = mock {
             on { image(any(), any(), any(), any()) } doReturn Single.just(imageDto)
-            on { vclip(any(), any(), any(), any()) } doReturn Single.just(dummyVclipDto())
+            on { vclip(any(), any(), any(), any()) } doReturn Single.just(Dummy.vclipDto())
         }
 
         // when
@@ -120,7 +121,7 @@ class TestRemoteRepository : BaseTest() {
         val throwable = Throwable("error")
         searchService = mock {
             on { image(any(), any(), any(), any()) } doReturn Single.error(throwable)
-            on { vclip(any(), any(), any(), any()) } doReturn Single.just(dummyVclipDto())
+            on { vclip(any(), any(), any(), any()) } doReturn Single.just(Dummy.vclipDto())
         }
 
         // when
@@ -129,50 +130,4 @@ class TestRemoteRepository : BaseTest() {
         // then
         result.assertError(throwable)
     }
-
-    private fun dummyImageDto(isEnd: Boolean = false) = KakaoImageSearchDto(
-        documents = listOf(KakaoImageResult(collection = "",
-            thumbnail_url = "1",
-            image_url = null,
-            width = 0,
-            height = 0,
-            display_sitename = null,
-            doc_url = null,
-            datetime = "2017-07-24T08:10:00.000+09:00"
-        ),KakaoImageResult(collection = "",
-            thumbnail_url = "2",
-            image_url = null,
-            width = 0,
-            height = 0,
-            display_sitename = null,
-            doc_url = null,
-            datetime = "2019-07-03T07:30:00.000+09:00"
-        )),
-        meta = KakaoMetaResult(
-            is_end = isEnd,
-            pageable_count = 1,
-            total_count = 2
-        )
-    )
-
-    private fun dummyVclipDto(isEnd: Boolean = false) = KakaoVClipSearchDto(
-        documents = listOf(KakaoVClipResult(title = "",
-            url = "",
-            datetime = "2021-08-27T17:15:36.000+09:00",
-            play_time = 0,
-            thumbnail = "3",
-            author = ""
-        ),KakaoVClipResult(title = "",
-            url = "",
-            datetime = "2017-07-03T07:30:00.000+09:00",
-            play_time = 0,
-            thumbnail = "4",
-            author = ""
-        )),
-        meta = KakaoMetaResult(
-            is_end = isEnd,
-            pageable_count = 1,
-            total_count = 2
-        )
-    )
 }

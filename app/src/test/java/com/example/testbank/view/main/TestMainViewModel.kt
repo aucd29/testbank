@@ -1,9 +1,8 @@
 package com.example.testbank.view.main
 
-import androidx.databinding.ObservableBoolean
 import com.example.android.architecture.blueprints.todoapp.getOrAwaitValue
 import com.example.testbank.base.BaseViewModelTest
-import com.example.testbank.repository.local.model.search.SearchModel
+import com.example.testbank.base.dummy.Dummy
 import com.nhaarman.expect.expect
 import org.junit.Test
 
@@ -15,7 +14,7 @@ class TestMainViewModel : BaseViewModelTest<MainViewModel>() {
     @Test
     fun `기본 토글`() {
         // given
-        val model = dummySearchModel()
+        val model = Dummy.searchModel()
 
         // when
         viewmodel.toggleLike(model)
@@ -28,7 +27,7 @@ class TestMainViewModel : BaseViewModelTest<MainViewModel>() {
     @Test
     fun `토글 연속 하면 삭제`() {
         // given
-        val model = dummySearchModel()
+        val model = Dummy.searchModel()
 
         // when
         viewmodel.toggleLike(model)
@@ -41,7 +40,7 @@ class TestMainViewModel : BaseViewModelTest<MainViewModel>() {
     @Test
     fun `토글 옵저브`() {
         // given
-        val model = dummySearchModel()
+        val model = Dummy.searchModel()
 
         // when
         viewmodel.toggleLike(model)
@@ -50,15 +49,4 @@ class TestMainViewModel : BaseViewModelTest<MainViewModel>() {
         val result = viewmodel.likeItems.getOrAwaitValue()
         expect(result.first()).toBe(model)
     }
-
-    private fun dummySearchModel(like: Boolean = false) = SearchModel(
-        id = 0,
-        thumbnailUrl = "",
-        displaySiteName = "",
-        datetime = "",
-        time = 0,
-        url = "",
-        like = ObservableBoolean(like),
-        viewType = 0
-    )
 }
