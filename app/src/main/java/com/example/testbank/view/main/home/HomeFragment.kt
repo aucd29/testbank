@@ -27,9 +27,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             TabLayoutMediator(
                 homeTabs,
                 homeViewpager
-            ) { tab, position ->
-                tab.text = string.get().tabLabel(position)
-            }.attach()
+            ) { tab, position -> tab.text = string.get().tabLabel(position) }.attach()
         }
     }
 }

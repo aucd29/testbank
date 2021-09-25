@@ -24,7 +24,7 @@ annotation class HiltAlarmFragment
 object AlarmFragmentModule {
     @HiltAlarmFragment
     @Provides
-    fun provideMoreAdapter(): BaseTypeListAdapter<BaseAlarmModel> =
+    fun provideAlarmAdapter(): BaseTypeListAdapter<BaseAlarmModel> =
         BaseTypeListAdapter(
             mapOf(
                 BaseAlarmModel.TYPE_SUBJECT to R.layout.item_alarm_subject,
@@ -39,6 +39,7 @@ object AlarmFragmentModule {
 
                     binding.itemAlarmMenuLinearContainer.removeAllViews()
 
+                    // 컨테이너에 하위 객체를 추가한다. [aucd29][2021/09/25]
                     mores?.forEach {
                         val context = binding.itemAlarmMenuLinearContainer.context
                         val inflater = LayoutInflater.from(context)

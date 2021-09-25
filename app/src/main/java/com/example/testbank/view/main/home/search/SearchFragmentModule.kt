@@ -27,7 +27,6 @@ object SearchFragmentModule {
 @Module
 @InstallIn(ViewModelComponent::class)
 object SearchViewModelModule {
-
     @Module
     @InstallIn(ViewModelComponent::class)
     interface BindModule {

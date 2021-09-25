@@ -32,7 +32,7 @@ class ServiceFragment : BaseFragment<FragmentServiceBinding>(R.layout.fragment_s
 
             serviceRecycler.apply {
                 addItemDecoration(marginDecoration.get())
-                addOnScrollListener(TabSyncedScrollListener())
+                addOnScrollListener(TabSyncedScrollListener()) // inner 클래스
                 layoutManager = linearLayoutManager.get()
 
                 adapter = serviceAdapter.get().apply {

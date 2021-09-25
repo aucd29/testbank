@@ -11,6 +11,10 @@ class MainViewModel : BaseViewModel() {
     val likeItems: LiveData<MutableList<SearchModel>>
         get() = _likeItems
 
+    /**
+     * 좋아요를 선택한 항목에 대해서 상태 값을 조정한 뒤 리스트에 넣는다.
+     * @param model 검색된 객체
+     */
     fun toggleLike(model: SearchModel) {
         _likeItems.value?.let {
             _likeItems.value = it.toMutableList().apply {

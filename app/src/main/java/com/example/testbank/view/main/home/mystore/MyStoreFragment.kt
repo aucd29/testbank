@@ -16,8 +16,7 @@ import javax.inject.Inject
 class MyStoreFragment : BaseFragment<FragmentMystoreBinding>(R.layout.fragment_mystore) {
     private val mainViewModel: MainViewModel by activityViewModels()
 
-    @Inject
-    @HiltMyStoreFragment
+    @Inject @HiltMyStoreFragment
     lateinit var mystoreAdapter: dagger.Lazy<BaseTypeListAdapter<SearchModel>>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

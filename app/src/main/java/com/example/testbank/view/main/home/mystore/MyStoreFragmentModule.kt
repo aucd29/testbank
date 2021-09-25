@@ -18,6 +18,6 @@ annotation class HiltMyStoreFragment
 object MyStoreFragmentModule {
     @HiltMyStoreFragment
     @Provides
-    fun provideTypeListAdapter(): BaseTypeListAdapter<SearchModel> =
+    fun provideMyStoreAdapter(): BaseTypeListAdapter<SearchModel> =
         BaseTypeListAdapter(R.layout.item_mystore)
 }
