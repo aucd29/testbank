@@ -18,7 +18,7 @@ package com.markmount.wadiz.base
 
 import androidx.lifecycle.LiveData
 import com.example.android.architecture.blueprints.todoapp.getOrAwaitValue
-import com.markmount.wadiz.common.arch.Event
+import com.example.testbank.base.google.Event
 import org.junit.Assert.assertEquals
 
 fun assertLiveDataEventTriggered(

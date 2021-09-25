@@ -1,28 +1,10 @@
-package com.markmount.wadiz.base
+package com.example.testbank.base
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import io.reactivex.android.plugins.RxAndroidPlugins
-import io.reactivex.plugins.RxJavaPlugins
-import io.reactivex.schedulers.Schedulers
-import org.junit.After
-import org.junit.Before
-import org.junit.Rule
+import androidx.lifecycle.ViewModel
+import com.markmount.wadiz.base.BaseTest
 
+abstract class BaseViewModelTest<T: ViewModel> : BaseTest() {
+    val viewmodel: T by lazy { createViewModel() }
 
-abstract class BaseViewModelTest {
-    @get:Rule
-    val rule = InstantTaskExecutorRule()
-
-    @Before
-    open fun setUp() {
-        RxJavaPlugins.setIoSchedulerHandler { Schedulers.trampoline() }
-        RxJavaPlugins.setComputationSchedulerHandler { Schedulers.trampoline() }
-        RxAndroidPlugins.setMainThreadSchedulerHandler { Schedulers.trampoline() }
-    }
-
-    @After
-    open fun tearDown() {
-        RxJavaPlugins.reset()
-        RxAndroidPlugins.reset()
-    }
+    abstract fun createViewModel(): T
 }

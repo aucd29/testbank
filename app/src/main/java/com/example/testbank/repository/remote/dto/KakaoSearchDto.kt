@@ -34,8 +34,8 @@ data class KakaoSearch<T>(
     val meta: KakaoMetaResult?,
 
     // {"errorType":"InvalidArgument","message":"page is more than max"}
-    val errorType: String?,
-    val message: String?
+    val errorType: String? = null,
+    val message: String? = null
 ) : Serializable
 
 typealias KakaoImageSearchDto = KakaoSearch<KakaoImageResult>

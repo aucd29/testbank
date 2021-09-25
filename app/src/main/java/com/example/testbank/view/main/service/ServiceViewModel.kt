@@ -23,21 +23,23 @@ class ServiceViewModel @Inject constructor(
         disposable += repositoryManager.serviceMenus()
             .map {
                 val indexes = arrayListOf<Int>()
-                var oldPos = 0
-                it.forEachIndexed { index, data ->
-                    if (data is ServiceSubjectModel) {
-                        indexes += if (oldPos == 0) {
-                            index - oldPos
-                        } else {
-                            index - oldPos - 1
+                if (it.isNotEmpty()) {
+                    var oldPos = 0
+                    it.forEachIndexed { index, data ->
+                        if (data is ServiceSubjectModel) {
+                            indexes += if (oldPos == 0) {
+                                index - oldPos
+                            } else {
+                                index - oldPos - 1
+                            }
+
+                            oldPos = index
                         }
-
-                        oldPos = index
                     }
-                }
-                indexes += (it.size - oldPos)
+                    indexes += (it.size - oldPos)
 
-                Timber.d("[SERVICE] indexes $indexes")
+                    Timber.d("[SERVICE] indexes $indexes")
+                }
                 tabIndexes.set(indexes)
 
                 it

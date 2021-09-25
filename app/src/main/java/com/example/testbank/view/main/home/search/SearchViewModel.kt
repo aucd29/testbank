@@ -1,5 +1,6 @@
 package com.example.testbank.view.main.home.search
 
+import androidx.annotation.VisibleForTesting
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
@@ -30,15 +31,19 @@ class SearchViewModel @Inject constructor(
     val searchItems = ObservableField<PagedList<SearchModel>>()
     val isSearchEmpty = ObservableBoolean(false)
     val isKakaoLabel = ObservableBoolean(true)
+    val isLoading = ObservableBoolean(false)
     private var isFirstLoad = true
 
     fun search() {
         if (keyword.value.isNullOrEmpty()) {
-            dialog(DialogModel(message = string.pleaseInsertKeyword()))
+            dialog(string.pleaseInsertKeyword())
             return
         }
 
         isKakaoLabel.set(false)
+        isSearchEmpty.set(false)
+        isLoading.set(true)
+
         sendEvent(EVENT_HIDE_KEYBOARD)
         Timber.d("[SEARCH] ${keyword.value}")
         stateHandle.set(KEY_SEARCH_KEYWORD, keyword.value)
@@ -62,7 +67,12 @@ class SearchViewModel @Inject constructor(
 
                     // 검색 목록 설정
                     searchItems.set(it)
-                }, Timber::e)
+                    isLoading.set(false)
+                }, {
+                    Timber.e(it)
+                    isSearchEmpty.set(true)
+                    dialog(string.networkError())
+                })
         } else {
             pagedListManager.invalidate()
         }
@@ -72,6 +82,10 @@ class SearchViewModel @Inject constructor(
         super.onCleared()
         pagedListManager.onCleard()
     }
+
+    @VisibleForTesting
+    fun testIsFirstLoading() =
+        isFirstLoad
 
     companion object {
         const val KEY_SEARCH_KEYWORD = "key-search-keyword"

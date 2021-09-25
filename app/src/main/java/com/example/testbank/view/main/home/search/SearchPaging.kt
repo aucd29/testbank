@@ -49,7 +49,7 @@ class SearchDataSource @Inject constructor(
             .subscribe({
                 if (it.list.isNullOrEmpty()) {
                     isLoadAfter = false
-                    callback.onResult(listOf(), 0, 1)
+                    callback.onResult(listOf())
                     dataLoadedSubject.onNext(0)
                 } else {
                     isLoadAfter = it.isImageEnd && it.isVideoEnd
@@ -63,7 +63,7 @@ class SearchDataSource @Inject constructor(
             }, {
                 isLoadAfter = false
                 Timber.e(it)
-                callback.onResult(listOf(), 0, 1)
+                callback.onResult(listOf())
                 dataLoadedSubject.onNext(0)
             })
     }

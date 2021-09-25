@@ -43,12 +43,11 @@ class RemoteRepository @Inject constructor(
                 videos?.let(this::addAll)
             }
 
-            newList.sortBy { it.time }
-
+            newList.sortByDescending { it.time }
 
             val result = SearchResultModel(
-                image.meta?.is_end ?: false,
-                video.meta?.is_end ?: false,
+                image.meta?.is_end ?: true,
+                video.meta?.is_end ?: true,
                 newList
             )
 

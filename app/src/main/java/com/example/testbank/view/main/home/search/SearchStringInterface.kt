@@ -8,6 +8,7 @@ import javax.inject.Singleton
 
 interface SearchStringInterface {
     fun pleaseInsertKeyword(): String
+    fun networkError(): String
 }
 
 @Singleton
@@ -16,4 +17,7 @@ class SearchString @Inject constructor(
 ) : SearchStringInterface {
     override fun pleaseInsertKeyword(): String =
         context.getString(R.string.search_pls_insert_keyword)
+
+    override fun networkError(): String =
+        context.getString(R.string.common_network_error)
 }

@@ -86,5 +86,21 @@
             app:visibleOrGone="@{vm.isKakaoLabel}"
             />
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/la_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/search_recycler"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:visibleOrGone="@{vm.isLoading}"
+            app:lottie_rawRes="@raw/default_lottie"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
