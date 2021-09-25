@@ -65,7 +65,7 @@
             app:layout_constraintStart_toStartOf="@id/item_alarm_menu_more_layout"
             app:layout_constraintEnd_toEndOf="@+id/item_alarm_menu_chevron"
             app:layout_constraintTop_toBottomOf="@id/item_alarm_menu_more_layout"
-            app:visibleOrGone="@{item.expand}"
+            app:visibleOrGone="@{item.mores != null &amp;&amp; item.mores.size() > 0}"
             app:expandableLayout="@{item.expand}"
             >
 

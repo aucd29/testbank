@@ -14,6 +14,6 @@ class UserViewModel @Inject constructor(
         get() = _userName
 
     fun init() {
-        _userName.value = "아무개 >"
+        _userName.value = "아무개"
     }
 }

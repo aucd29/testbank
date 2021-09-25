@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.testbank.R
 import com.example.testbank.base.adapter.BaseTypeListAdapter
+import com.example.testbank.base.adapter.InfiniteTypeListAdapter
 import com.example.testbank.base.decoration.VerticalMarginItemDecoration
 import com.example.testbank.base.extension.dpToPx
 import com.example.testbank.databinding.ItemServiceScrollBannerBinding
@@ -35,7 +36,7 @@ object ServiceFragmentModule {
     @Provides
     fun provideServiceAdapter(
         @Named("scrollbannerAdapter")
-        bannerAdapter: BaseTypeListAdapter<ServiceScrollBannerItem>
+        bannerAdapter: InfiniteTypeListAdapter<ServiceScrollBannerItem>
     ): BaseTypeListAdapter<BaseServiceModel> =
         BaseTypeListAdapter(
             mapOf(
@@ -50,15 +51,11 @@ object ServiceFragmentModule {
                 is ItemServiceScrollBannerBinding -> {
                     binding.itemServiceScrollbannerVp.apply {
                         if (adapter == null) {
+                            bannerAdapter.setViewPager2(this@apply) { position ->
+                                Timber.d("[SERVICE] CHANGE BANNER $position")
+                                binding.pageIndicator.selection = position
+                            }
                             adapter = bannerAdapter
-                            registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
-                                override fun onPageSelected(position: Int) {
-                                    Timber.d("[SERVICE] CHANGE BANNER $position")
-                                    binding.pageIndicator.selection = position
-                                }
-                            })
-
-                            binding.pageIndicator.selection = 0
                         }
                     }
                 }
@@ -67,8 +64,8 @@ object ServiceFragmentModule {
 
     @Named("scrollbannerAdapter")
     @Provides
-    fun provideFragmentPagerAdapter(): BaseTypeListAdapter<ServiceScrollBannerItem> =
-        BaseTypeListAdapter(R.layout.item_service_large_banner)
+    fun provideFragmentPagerAdapter(): InfiniteTypeListAdapter<ServiceScrollBannerItem> =
+        InfiniteTypeListAdapter(R.layout.item_service_large_banner)
 
     @HiltServiceFragment
     @Provides

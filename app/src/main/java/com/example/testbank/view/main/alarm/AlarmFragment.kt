@@ -16,7 +16,7 @@ class AlarmFragment : BaseFragment<FragmentAlarmBinding>(R.layout.fragment_alarm
     private val viewmodel: AlarmViewModel by viewModels()
 
     @Inject @HiltAlarmFragment
-    lateinit var adapter: BaseTypeListAdapter<BaseAlarmModel>
+    lateinit var alarmAdapter: dagger.Lazy<BaseTypeListAdapter<BaseAlarmModel>>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,8 +24,11 @@ class AlarmFragment : BaseFragment<FragmentAlarmBinding>(R.layout.fragment_alarm
         binding.apply {
             vm = viewmodel
 
-            alarmRecycler.adapter = adapter.apply {
-                viewModel = viewmodel
+            alarmRecycler.apply {
+                itemAnimator = null
+                adapter = alarmAdapter.get().apply {
+                    viewModel = viewmodel
+                }
             }
         }
 
