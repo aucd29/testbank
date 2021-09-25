@@ -71,8 +71,12 @@ class TestRemoteRepository : BaseTest() {
     @Test
     fun `image 결과 invalid argument`() {
         // given
+        val imageDto = mock<KakaoImageSearchDto> {
+            on { errorType } doReturn "InvalidArgument"
+            on { message} doReturn "page is more than max"
+        }
         searchService = mock {
-            on { image(any(), any(), any(), any()) } doReturn Single.just(dummyImageInvalidArgumentDto())
+            on { image(any(), any(), any(), any()) } doReturn Single.just(imageDto)
             on { vclip(any(), any(), any(), any()) } doReturn Single.just(dummyVclipDto())
         }
 
@@ -88,9 +92,17 @@ class TestRemoteRepository : BaseTest() {
     @Test
     fun `image 와 vclip 결과 invalid argument`() {
         // given
+        val imageDto = mock<KakaoImageSearchDto> {
+            on { errorType } doReturn "InvalidArgument"
+            on { message} doReturn "page is more than max"
+        }
+        val vclipDto = mock<KakaoVClipSearchDto> {
+            on { errorType } doReturn "InvalidArgument"
+            on { message} doReturn "page is more than max"
+        }
         searchService = mock {
-            on { image(any(), any(), any(), any()) } doReturn Single.just(dummyImageInvalidArgumentDto())
-            on { vclip(any(), any(), any(), any()) } doReturn Single.just(dummyVclipInvalidArgumentDto())
+            on { image(any(), any(), any(), any()) } doReturn Single.just(imageDto)
+            on { vclip(any(), any(), any(), any()) } doReturn Single.just(vclipDto)
         }
 
         // when
@@ -100,6 +112,22 @@ class TestRemoteRepository : BaseTest() {
         expect(result.isImageEnd).toBe(true)
         expect(result.isVideoEnd).toBe(true)
         expect(result.list?.size).toBe(0)
+    }
+
+    @Test
+    fun `image 결과 exception`() {
+        // given
+        val throwable = Throwable("error")
+        searchService = mock {
+            on { image(any(), any(), any(), any()) } doReturn Single.error(throwable)
+            on { vclip(any(), any(), any(), any()) } doReturn Single.just(dummyVclipDto())
+        }
+
+        // when
+        val result = repository.search("1", 1).test()
+
+        // then
+        result.assertError(throwable)
     }
 
     private fun dummyImageDto(isEnd: Boolean = false) = KakaoImageSearchDto(
@@ -127,13 +155,6 @@ class TestRemoteRepository : BaseTest() {
         )
     )
 
-    private fun dummyImageInvalidArgumentDto() = KakaoImageSearchDto(
-        documents = null,
-        meta = null,
-        errorType = "InvalidArgument",
-        message = "size is more than max"
-    )
-
     private fun dummyVclipDto(isEnd: Boolean = false) = KakaoVClipSearchDto(
         documents = listOf(KakaoVClipResult(title = "",
             url = "",
@@ -153,12 +174,5 @@ class TestRemoteRepository : BaseTest() {
             pageable_count = 1,
             total_count = 2
         )
-    )
-
-    private fun dummyVclipInvalidArgumentDto() = KakaoVClipSearchDto(
-        documents = null,
-        meta = null,
-        errorType = "InvalidArgument",
-        message = "size is more than max"
     )
 }
