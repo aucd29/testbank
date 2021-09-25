@@ -11,7 +11,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.main.MainActivity">
+        tools:context=".view.main.MainActivity"
+        android:background="@color/color_white"
+        >
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_main"

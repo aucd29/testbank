@@ -20,6 +20,7 @@
             android:layout_height="?actionBarSize"
             app:tabTextAppearance="@style/kakaoTabTextAppearance"
             app:tabIndicatorHeight="1dp"
+            app:tabIndicatorColor="@color/color_grey_900"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
