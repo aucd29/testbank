@@ -3,7 +3,6 @@ package com.example.testbank.repository
 import com.example.testbank.repository.dummy.HiltDummyRepository
 import com.example.testbank.repository.local.model.alarm.BaseAlarmModel
 import com.example.testbank.repository.local.model.more.BaseMoreModel
-import com.example.testbank.repository.local.model.search.SearchModel
 import com.example.testbank.repository.local.model.search.SearchResultModel
 import com.example.testbank.repository.local.model.service.BaseServiceModel
 import com.example.testbank.repository.remote.HiltRemoteRepository

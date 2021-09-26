@@ -366,7 +366,7 @@ class DummyRepository @Inject constructor(
                 MoreHeaderModel(index++,
                     userName = "아무개",
                     banner = MoreHeaderEventBanner(
-                        title = "제휴 신용카트 9월 이벤트",
+                        title = "제휴 신용카드 9월 이벤트",
                         backgroundColor = "#ececec",
                         textColor = "#000000",
                         startIcon = null

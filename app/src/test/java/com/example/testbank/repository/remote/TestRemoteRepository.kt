@@ -74,7 +74,7 @@ class TestRemoteRepository : BaseTest() {
         // given
         val imageDto = mock<KakaoImageSearchDto> {
             on { errorType } doReturn "InvalidArgument"
-            on { message} doReturn "page is more than max"
+            on { message } doReturn "page is more than max"
         }
         searchService = mock {
             on { image(any(), any(), any(), any()) } doReturn Single.just(imageDto)
@@ -95,11 +95,11 @@ class TestRemoteRepository : BaseTest() {
         // given
         val imageDto = mock<KakaoImageSearchDto> {
             on { errorType } doReturn "InvalidArgument"
-            on { message} doReturn "page is more than max"
+            on { message } doReturn "page is more than max"
         }
         val vclipDto = mock<KakaoVClipSearchDto> {
             on { errorType } doReturn "InvalidArgument"
-            on { message} doReturn "page is more than max"
+            on { message } doReturn "page is more than max"
         }
         searchService = mock {
             on { image(any(), any(), any(), any()) } doReturn Single.just(imageDto)

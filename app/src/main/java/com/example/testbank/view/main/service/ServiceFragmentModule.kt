@@ -2,9 +2,7 @@ package com.example.testbank.view.main.service
 
 import android.content.Context
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.example.testbank.R
 import com.example.testbank.base.adapter.BaseTypeListAdapter
 import com.example.testbank.base.adapter.InfiniteTypeListAdapter
@@ -13,15 +11,12 @@ import com.example.testbank.base.extension.dpToPx
 import com.example.testbank.databinding.ItemServiceScrollBannerBinding
 import com.example.testbank.repository.local.model.service.BaseServiceModel
 import com.example.testbank.repository.local.model.service.ServiceScrollBannerItem
-import com.google.android.material.tabs.TabLayout
 import com.omidio.tabsyncedrecyclerview.LinearLayoutManagerWithSmoothScroller
-import com.omidio.tabsyncedrecyclerview.TabSyncedRecyclerView
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.FragmentComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
-import timber.log.Timber
 import javax.inject.Named
 import javax.inject.Qualifier
 

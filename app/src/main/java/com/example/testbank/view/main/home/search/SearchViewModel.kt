@@ -8,7 +8,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.paging.PagedList
 import com.example.testbank.base.BaseViewModel
 import com.example.testbank.base.EventInterface
-import com.example.testbank.deviceapi.dialog.DialogModel
 import com.example.testbank.repository.local.model.search.SearchModel
 import com.example.testbank.repository.local.model.search.SearchPagedListManager
 import dagger.hilt.android.lifecycle.HiltViewModel

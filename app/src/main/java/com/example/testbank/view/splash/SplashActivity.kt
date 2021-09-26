@@ -6,7 +6,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testbank.R
 import com.example.testbank.view.main.MainActivity
-import dagger.hilt.android.AndroidEntryPoint
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
