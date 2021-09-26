@@ -24,9 +24,12 @@
             android:layout_width="160dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
+            android:layout_marginStart="10dp"
+            android:paddingBottom="3dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:imageUri="@{item.thumbnailUrl}"
+            app:imageRadius="@{5}"
             tools:src="@tools:sample/avatars"
             />
 
