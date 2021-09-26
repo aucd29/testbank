@@ -26,7 +26,7 @@ class SearchViewModel @Inject constructor(
 ) : BaseViewModel(),
     EventInterface by event
 {
-    val keyword: MutableLiveData<String> = stateHandle.getLiveData(KEY_SEARCH_KEYWORD, "카카오뱅크 우리나라")
+    val keyword: MutableLiveData<String> = stateHandle.getLiveData(KEY_SEARCH_KEYWORD, "카카오뱅크")
     val searchItems = ObservableField<PagedList<SearchModel>>()
     val isSearchEmpty = ObservableBoolean(false)
     val isKakaoLabel = ObservableBoolean(true)
