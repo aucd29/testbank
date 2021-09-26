@@ -32,7 +32,15 @@ class SearchViewModel @Inject constructor(
     val isSearchEmpty = ObservableBoolean(false)
     val isKakaoLabel = ObservableBoolean(true)
     val isLoading = ObservableBoolean(false)
+    val editorAction = ObservableField<(String?) -> Boolean>()
     private var isFirstLoad = true
+
+    init {
+        editorAction.set {
+            search()
+            true
+        }
+    }
 
     fun search() {
         if (keyword.value.isNullOrEmpty()) {

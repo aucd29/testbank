@@ -21,17 +21,15 @@ class InfiniteTypeListAdapter<T: ListAdapterViewType<*>>(
         viewDataBindingCallback: ((ViewDataBinding, Int, T) -> Unit)? = null
     ) : this(mapOf(0 to resid), viewModel, viewDataBindingCallback)
 
-    val increaseCount = 2
-    val startPosition = 1
     var isScrolled = false
     var tempPosition = -1
 
     /** 실제 어뎁터에 등록되어 있는 리스트의 개수 */
     val realCount: Int
-        get() = if (currentList.size == 0) {
+        get() = if (currentList.size != 0) {
             0
         } else {
-            currentList.size - increaseCount
+            currentList.size - INCREASE_COUNT
         }
 
     override fun submitList(list: MutableList<T>?) {
@@ -74,5 +72,9 @@ class InfiniteTypeListAdapter<T: ListAdapterViewType<*>>(
         }
 
         viewpager.registerOnPageChangeCallback(pageListener)
+    }
+
+    companion object {
+        const val INCREASE_COUNT = 2
     }
 }

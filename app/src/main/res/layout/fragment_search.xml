@@ -30,6 +30,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/iv_search_button"
             android:text="@={vm.keyword}"
+            app:editorAction="@{vm.editorAction}"
             />
         
         <androidx.appcompat.widget.AppCompatImageView
