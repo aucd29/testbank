@@ -52,7 +52,6 @@ object ServiceFragmentModule {
                     binding.itemServiceScrollbannerVp.apply {
                         if (adapter == null) {
                             bannerAdapter.setViewPager2(this@apply) { position ->
-                                Timber.d("[SERVICE] CHANGE BANNER $position")
                                 binding.pageIndicator.selection = position
                             }
                             adapter = bannerAdapter

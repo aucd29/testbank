@@ -28,7 +28,7 @@ class ServiceViewModel @Inject constructor(
                     it.forEachIndexed { index, data ->
                         if (data is ServiceSubjectModel) {
                             indexes += if (oldPos == 0) {
-                                index - oldPos
+                                index - oldPos + 1
                             } else {
                                 index - oldPos - 1
                             }
