@@ -47,13 +47,13 @@ class DummyRepository @Inject constructor(
                             subTitle = "중신용대출\n중신용비삼금대출\n첫 달 이자 지원중",
                             image = "",
                             backgroundColor = "#3a5894"
-                        )
+                        ),
                     )
                 ),
 
                 ServiceSubjectModel(
                     id = index++,
-                    title = "예금*적금"
+                    title = "예금ㆍ적금"
                 ),
                 ServiceMenu1Model(
                     id = index++,
