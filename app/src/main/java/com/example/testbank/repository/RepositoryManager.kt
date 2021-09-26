@@ -37,11 +37,11 @@ interface RepositoryInterface {
     /**
      * 이미지 + 동영상 검색
      * @param keyword 검색어
-     * @param endImage 더 이상 이미지 검색이 불가한지 유/무
-     * @param endVideo 더 이상 동영상 검색이 불가한지 유/무
+     * @param isImageEnd 더 이상 이미지 검색이 불가한지 유/무
+     * @param isVideoEnd 더 이상 동영상 검색이 불가한지 유/무
      * @return 검색 결과
      */
-    fun search(keyword: String, page: Int, endImage: Boolean = false, endVideo: Boolean = false): Single<SearchResultModel>
+    fun search(keyword: String, page: Int, isImageEnd: Boolean = false, isVideoEnd: Boolean = false): Single<SearchResultModel>
 }
 
 @Singleton
@@ -58,6 +58,6 @@ class RepositoryManager @Inject constructor(
     override fun moreMenus(): Single<List<BaseMoreModel>> =
         dummyRepository.moreMenus()
 
-    override fun search(keyword: String, page: Int, endImage: Boolean, endVideo: Boolean): Single<SearchResultModel> =
-        remoteRepository.search(keyword, page, endImage, endVideo)
+    override fun search(keyword: String, page: Int, isImageEnd: Boolean, isVideoEnd: Boolean): Single<SearchResultModel> =
+        remoteRepository.search(keyword, page, isImageEnd, isVideoEnd)
 }

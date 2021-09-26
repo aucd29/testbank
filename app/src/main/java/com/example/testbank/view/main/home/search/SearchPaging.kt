@@ -38,25 +38,37 @@ class SearchDataSource @Inject constructor(
     @HiltRemoteRepository
     private val remoteRepository: RepositoryInterface,
 ) : PagedListDataSource<String, SearchModel>() {
+    private var isImageEnd = false
+    private var isVideoEnd = false
+    private var pageCount = 0
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<SearchModel>
     ) {
         Timber.d("[SEARCH] LOAD INIT : $requestParams")
+        // "meta":{"is_end":true,"pageable_count":10,"total_count":10}
+        // "meta":{"is_end":false,"pageable_count":1850,"total_count":1850}
+        pageCount = 1
 
-        disposable += remoteRepository.search(requestParams ?: "", 1)
+        disposable += remoteRepository.search(requestParams ?: "", pageCount)
             .subscribe({
                 if (it.list.isNullOrEmpty()) {
                     isLoadAfter = false
-                    callback.onResult(listOf())
+                    callback.onResult(emptyList())
                     dataLoadedSubject.onNext(0)
                 } else {
-                    isLoadAfter = it.isImageEnd && it.isVideoEnd
                     val list = it.list
                     addLastNum(list.size)
 
-                    checkMoreDataSource(params.requestedLoadSize, list.size)
+                    if (it.isVideoEnd && it.isImageEnd) {
+                        isLoadAfter = false
+                    }
+
+                    isImageEnd = it.isImageEnd
+                    isVideoEnd = it.isVideoEnd
+
+                    //checkMoreDataSource(params.requestedLoadSize, list.size)
                     callback.onResult(list, 0, list.size)
                     dataLoadedSubject.onNext(list.size)
                 }
@@ -78,13 +90,26 @@ class SearchDataSource @Inject constructor(
             return
         }
 
-        Timber.d("[SEARCH] LOAD AFTER '$requestParams' = ${lastNumber.get()}, ${params.requestedLoadSize}, PAGE: ${lastNumber.get() / params.requestedLoadSize}")
+        pageCount++
+        Timber.d("[SEARCH] LOAD AFTER '$requestParams' = ${lastNumber.get()}, , PAGE: $pageCount")
 
-        disposable += remoteRepository.search(requestParams ?: "", lastNumber.get() / params.requestedLoadSize)
+        disposable += remoteRepository.search(requestParams ?: "", pageCount, isImageEnd, isVideoEnd)
             .subscribe({
-                it.list?.let { list ->
+                if (it.list.isNullOrEmpty()) {
+                    isLoadAfter = false
+                    callback.onResult(emptyList())
+                } else {
+                    val list = it.list
                     addLastNum(list.size)
-                    checkMoreDataSource(params.requestedLoadSize, list.size)
+
+                    if (it.isVideoEnd && it.isImageEnd) {
+                        isLoadAfter = false
+                    }
+
+                    isImageEnd = it.isImageEnd
+                    isVideoEnd = it.isVideoEnd
+
+                    // checkMoreDataSource(params.requestedLoadSize, list.size)
                     callback.onResult(list)
                 }
             }, {

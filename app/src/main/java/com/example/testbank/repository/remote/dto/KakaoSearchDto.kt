@@ -30,8 +30,8 @@ data class KakaoVClipResult (
 ) : Serializable
 
 data class KakaoSearch<T>(
-    val documents: List<T>?,
-    val meta: KakaoMetaResult?,
+    val documents: List<T>? = null,
+    val meta: KakaoMetaResult? = null,
 
     // {"errorType":"InvalidArgument","message":"page is more than max"}
     val errorType: String? = null,

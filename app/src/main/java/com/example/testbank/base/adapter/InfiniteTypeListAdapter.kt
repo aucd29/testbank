@@ -63,7 +63,7 @@ class InfiniteTypeListAdapter<T: ListAdapterViewType<*>>(
                                 viewpager.setCurrentItem(1, false)
                                 scrollCallback?.invoke(0)
                             } else {
-                                Timber.e("[SERVICE] MOVE ${tempPosition - 1}")
+                                Timber.d("[SERVICE] MOVE ${tempPosition - 1}")
                                 scrollCallback?.invoke(tempPosition - 1)
                             }
                         }

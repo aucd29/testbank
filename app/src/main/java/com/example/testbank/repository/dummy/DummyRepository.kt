@@ -438,6 +438,6 @@ class DummyRepository @Inject constructor(
             )
         }
 
-    override fun search(keyword: String, page: Int, endImage: Boolean, endVideo: Boolean): Single<SearchResultModel> =
+    override fun search(keyword: String, page: Int, isImageEnd: Boolean, isVideoEnd: Boolean): Single<SearchResultModel> =
         Single.just(SearchResultModel())
 }

@@ -55,6 +55,7 @@ object OkhttpModule {
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
             .cookieJar(cookieProxy)
+            .retryOnConnectionFailure(true)     // HTTP FAILED: java.io.IOException: unexpected end of stream on
             .addInterceptor(authorizationInterceptor)
 
         if (BuildConfig.DEBUG) {

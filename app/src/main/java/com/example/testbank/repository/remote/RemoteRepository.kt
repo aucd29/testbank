@@ -7,6 +7,8 @@ import com.example.testbank.repository.local.model.search.SearchModel
 import com.example.testbank.repository.local.model.search.SearchResultModel
 import com.example.testbank.repository.local.model.service.BaseServiceModel
 import com.example.testbank.repository.mapper.toSearchModels
+import com.example.testbank.repository.remote.dto.KakaoImageSearchDto
+import com.example.testbank.repository.remote.dto.KakaoVClipSearchDto
 import com.example.testbank.repository.remote.service.KakaoRestSearchService
 import io.reactivex.Single
 import io.reactivex.rxkotlin.Singles
@@ -31,10 +33,24 @@ class RemoteRepository @Inject constructor(
     override fun moreMenus(): Single<List<BaseMoreModel>> =
         Single.just(emptyList())
 
-    override fun search(keyword: String, page: Int, endImage: Boolean, endVideo: Boolean): Single<SearchResultModel> =
+    override fun search(keyword: String, page: Int, isImageEnd: Boolean, isVideoEnd: Boolean): Single<SearchResultModel> =
         Singles.zip(
-            searchService.image(query = keyword, page = page.toString()),
-            searchService.vclip(query = keyword, page = page.toString())
+            if (isImageEnd.not()) {
+                searchService.image(query = keyword, page = page.toString())
+            } else {
+                Single.just(KakaoImageSearchDto(
+                    errorType = "end",
+                    message = "end"
+                ))
+            },
+            if (isVideoEnd.not()) {
+                searchService.vclip(query = keyword, page = page.toString())
+            } else {
+                Single.just(KakaoVClipSearchDto(
+                    errorType = "end",
+                    message = "end"
+                ))
+            }
         ) { image, video ->
             val images = image.toSearchModels()
             val videos = video.toSearchModels()
